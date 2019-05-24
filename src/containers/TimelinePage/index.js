@@ -4,7 +4,7 @@ import Dashboard from 'components/Dashboard'
 
 function TimelinePage(props) {
   return (
-    <Dashboard />
+    <Dashboard title="#timeline" />
   )
 }
 

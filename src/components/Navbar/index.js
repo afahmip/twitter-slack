@@ -36,8 +36,18 @@ function Navbar(props) {
           <Section title="Direct Messages" />
         </Item>
       </div>
+      <div className="section">
+        <Item color="#937A94">
+          <Section title="Worldwide Trends" />
+        </Item>
+      </div>
     </Wrapper>
   )
+}
+
+Navbar.propTypes = {
+  active: PropTypes.number,
+  title: PropTypes.string
 }
 
 export default Navbar
