@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 function Content(props) {
   const item = []
   for (let i = 0; i < 100; i++)
-    item.push(<div>Hoho</div>)
+    item.push(<div key={i}>Hoho</div>)
 
   return (
     <Wrapper>
