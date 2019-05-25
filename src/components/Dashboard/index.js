@@ -9,7 +9,10 @@ function Dashboard(props) {
   return (
     <div className="row">
       <Navbar />
-      <Shell title={props.title} />
+      <Shell
+        title={props.title}
+        msgPlaceholder={props.msgPlaceholder}
+      />
     </div>
   )
 }
@@ -17,7 +20,8 @@ function Dashboard(props) {
 Dashboard.propTypes = {
   children: PropTypes.node.isRequired,
   active: PropTypes.number,
-  title: PropTypes.string
+  title: PropTypes.string,
+  msgPlaceholder: PropTypes.string
 }
 
 export default Dashboard

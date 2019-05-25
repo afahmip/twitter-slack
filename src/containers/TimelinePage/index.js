@@ -4,7 +4,10 @@ import Dashboard from 'components/Dashboard'
 
 function TimelinePage(props) {
   return (
-    <Dashboard title="#timeline" />
+    <Dashboard
+      title="#timeline"
+      msgPlaceholder="What's happening?"  
+    />
   )
 }
 

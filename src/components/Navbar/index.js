@@ -21,23 +21,23 @@ function Navbar(props) {
         <Title />
       </Item>
       <div className="section">
-        <Item color="#937A94">
+        <Item color="#B29FB3">
           <Section title="Channels" />
         </Item>
-        <Item color="#937A94">
+        <Item color="#B29FB3">
           <Part title="Timeline" icon="fas fa-home" />
         </Item>
-        <Item color="#937A94">
+        <Item color="#B29FB3">
           <Part title="Notifications" icon="fas fa-bell" />
         </Item>
       </div>
       <div className="section">
-        <Item color="#937A94">
+        <Item color="#B29FB3">
           <Section title="Direct Messages" />
         </Item>
       </div>
       <div className="section">
-        <Item color="#937A94">
+        <Item color="#B29FB3">
           <Section title="Worldwide Trends" />
         </Item>
       </div>
