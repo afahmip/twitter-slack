@@ -23,6 +23,7 @@ const oa = new OAuth.OAuth(
 )
 
 app.use(cors())
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/api/timeline', (req, res) => {
@@ -30,6 +31,23 @@ app.get('/api/timeline', (req, res) => {
     'https://api.twitter.com/1.1/statuses/home_timeline.json',
     accessToken,
     accessSecret,
+    function (e, data, result) {
+      res.send(JSON.parse(data))
+    }
+  )
+})
+
+app.post('/hello', (req, res) => {
+  res.send('hello')
+})
+
+app.post('/api/tweet', (req, res) => {
+  const status = req.body.status
+  oa.post(
+    `https://api.twitter.com/1.1/statuses/update.json`,
+    accessToken,
+    accessSecret,
+    {status},
     function (e, data, result) {
       res.send(JSON.parse(data))
     }

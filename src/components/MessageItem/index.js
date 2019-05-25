@@ -21,8 +21,8 @@ const Image = styled.div`
 `
 
 const Content = styled.div`
-  flex-basis: calc(100% - 42px);
-  padding-left: 7px;
+  flex-basis: calc(100% - 45px);
+  padding-left: 10px;
 
   div:first-child {
     margin-bottom: 3px;
