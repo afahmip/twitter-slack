@@ -17,6 +17,22 @@ input:focus, textarea {
   font-family: 'Lato', sans-serif;
 }
 
+/* Custom Elements */
+
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  border: solid 4px white;
+  background: rgba(29, 28, 29, .52);
+}
+
+::-webkit-scrollbar {
+  width: 17px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
 /* Custom Grids */
 
 .row {

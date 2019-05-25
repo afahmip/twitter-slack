@@ -4,7 +4,11 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   padding-left: 1.2rem;
   height: calc(100vh - 8.3rem);
-  overflow: auto;
+  overflow: hidden;
+  transition-duration: 0.2s;
+  &:hover {
+    overflow: auto;
+  }
 `
 
 function Content(props) {
