@@ -5,12 +5,9 @@ import PropTypes from 'prop-types'
 const Wrapper = styled.div`
   padding-left: 1.2rem;
   padding-right: 1.2rem;
-  // margin-bottom: 1.5rem;
-  height: 4.25rem;
+  height: 4rem;
   display: flex;
   flex-direction: column;
-  // position: absolute;
-  // bottom: 0;
 `
 
 const Input = styled.input`

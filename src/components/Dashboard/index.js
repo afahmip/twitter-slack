@@ -11,6 +11,7 @@ function Dashboard(props) {
       <Navbar />
       <Shell
         title={props.title}
+        content={props.content}
         msgPlaceholder={props.msgPlaceholder}
       />
     </div>
@@ -21,6 +22,7 @@ Dashboard.propTypes = {
   children: PropTypes.node,
   active: PropTypes.number,
   title: PropTypes.string,
+  content: PropTypes.array,
   msgPlaceholder: PropTypes.string
 }
 

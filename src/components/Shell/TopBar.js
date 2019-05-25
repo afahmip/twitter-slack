@@ -5,11 +5,11 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   border-bottom: 1px solid #e5e5e5;
   width: 100%;
-  height: 4rem;
+  height: 3.6rem;
 `
 
 const Data = styled.div`
-  padding-left: 1.2rem;
+  padding-left: 27px;
   padding-top: 0.5rem;
   h1 {
     font-size: 1.2rem;

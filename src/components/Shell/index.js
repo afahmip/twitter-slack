@@ -14,7 +14,7 @@ function Shell(props) {
   return (
     <Wrapper>
       <TopBar title={props.title} />
-      <Content />
+      <Content data={props.content} />
       <MessageBar placeholder={props.msgPlaceholder} />
     </Wrapper>
   )
@@ -22,6 +22,7 @@ function Shell(props) {
 
 Shell.propTypes = {
   title: PropTypes.string,
+  content: PropTypes.array,
   msgPlaceholder: PropTypes.string
 }
 

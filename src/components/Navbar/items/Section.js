@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const Wrapper = styled.div`
   align-items: center;
   h1 {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 1rem;
     flex-basis: 80%;
   }
