@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/api/timeline', (req, res) => {
   oa.get(
-    'https://api.twitter.com/1.1/statuses/home_timeline.json',
+    'https://api.twitter.com/1.1/statuses/home_timeline.json?count=75',
     accessToken,
     accessSecret,
     function (e, data, result) {

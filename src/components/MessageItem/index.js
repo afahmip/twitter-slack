@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Linkify from 'react-linkify'
+import processString from 'react-process-string'
 
 const Wrapper = styled.div`
   padding: 7px 27px;
@@ -96,6 +98,14 @@ const ChildContent = styled.div`
   }
 `
 
+function urlify(text) {
+  let config = [{
+    regex: /@\w{1,15}\b/g,
+    fn: (key, res) => <a key={key} href={`https://www.twitter.com/${res}`} target="_blank" rel="noopener noreferrer">{res}</a>
+  }]
+  return processString(config)(text)
+}
+
 function MessageItem(props) {
   let child = null
   if (props.child) {
@@ -108,7 +118,9 @@ function MessageItem(props) {
           <span>@{props.child.id}</span>
         </div>
         <div>
-          <p>{props.child.text}</p>
+          <Linkify>
+            <p>{urlify(props.child.text)}</p>
+          </Linkify>
         </div>
       </ChildContent>
     </Child>
@@ -125,7 +137,9 @@ function MessageItem(props) {
           <span>@{props.id}</span>
         </div>
         <div>
-          <p>{props.text}</p>
+          <Linkify>
+            <p>{urlify(props.text)}</p>
+          </Linkify>
         </div>
         {child}
       </Content>

@@ -9,6 +9,7 @@ function TimelinePage(props) {
   const [tweets, setTweets] = useState([])
 
   useEffect(() => {
+    /* Use this for mock test */
     // let data = []
     // mockTimeline.map(r => {
     //   let item = {
@@ -30,6 +31,8 @@ function TimelinePage(props) {
     // })
     // console.log(data)
     // setTweets(data)
+    
+    /* Use this for real usage */
     fetch('http://localhost:5000/api/timeline')
       .then(res => res.json())
       .then(res => {
