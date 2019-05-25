@@ -15,14 +15,15 @@ const Wrapper = styled.div`
 
 function Content(props) {
   const item = []
-  props.data.map(d => {
+  props.data.map((d, i) => {
     item.push(
       <MessageItem
-        key={d.id}
+        key={i}
         id={d.id}
         name={d.name}
         photo={d.photo}
         text={d.text}
+        child={d.child || null}
       />
     )
   })

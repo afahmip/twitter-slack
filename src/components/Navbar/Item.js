@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   background-color: #3F0E40;
-  padding: 2px 12px 2px 15px;
+  padding: 3px 12px 3px 18px;
   cursor: pointer;
   * {
     font-size: 1.2rem;

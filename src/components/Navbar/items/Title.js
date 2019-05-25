@@ -25,7 +25,7 @@ const Bottom = styled.div`
   }
   i {
     color: #32b594;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     margin-right: 6px;
   }
 `

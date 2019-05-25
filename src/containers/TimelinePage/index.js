@@ -11,12 +11,22 @@ function TimelinePage(props) {
   useEffect(() => {
     let data = []
     mockTimeline.map(r => {
-      data.push({
+      let item = {
         id: r.user.screen_name,
         name: r.user.name,
         photo: r.user.profile_image_url_https,
         text: r.text
-      })
+      }
+      if (r.quoted_status) {
+        const q = r.quoted_status
+        item.child = {
+          id: q.user.screen_name,
+          name: q.user.name,
+          photo: q.user.profile_image_url_https,
+          text: q.text
+        }
+      }
+      data.push(item)
     })
     console.log(data)
     setTweets(data)
