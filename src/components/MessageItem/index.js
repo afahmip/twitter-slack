@@ -30,7 +30,8 @@ const Content = styled.div`
   div:first-child {
     margin-bottom: 3px;
 
-    span:first-child {
+    a:first-child > span {
+      color: #1D1C1D;
       font-size: 1rem;
       font-weight: bold;
       margin-right: 6px;
@@ -80,7 +81,8 @@ const ChildContent = styled.div`
       margin-right: 8px;
     }
 
-    span:nth-child(2) {
+    a:nth-child(2) > span {
+      color: #1D1C1D;
       margin-right: 6px;
       font-size: 1rem;
       font-weight: bold;
@@ -114,8 +116,12 @@ function MessageItem(props) {
       <div />
       <ChildContent>
         <div>
-          <img src={props.child.photo} alt="profpic" />
-          <span>{props.child.name}</span>
+          <Link to={`/${props.child.id}`}>
+            <img src={props.child.photo} alt="profpic" />
+          </Link>
+          <Link to={`/${props.child.id}`}>
+            <span>{props.child.name}</span>
+          </Link>
           <span>@{props.child.id}</span>
         </div>
         <div>
@@ -130,11 +136,15 @@ function MessageItem(props) {
   return (
     <Wrapper className="row">
       <Image>
-        <img src={props.photo} alt="profpic" />
+        <Link to={`/${props.id}`}>
+          <img src={props.photo} alt="profpic" />
+        </Link>
       </Image>
       <Content>
         <div>
-          <span>{props.name}</span>
+          <Link to={`/${props.id}`}>
+            <span>{props.name}</span>
+          </Link>
           <span>@{props.id}</span>
         </div>
         <div>

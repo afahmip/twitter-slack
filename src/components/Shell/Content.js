@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 
 function Content(props) {
   const item = []
-  props.data.map((d, i) => {
+  props.data.map((d, i) => 
     item.push(
       <MessageItem
         key={i}
@@ -26,7 +26,7 @@ function Content(props) {
         child={d.child || null}
       />
     )
-  })
+  )
 
   return (
     <Wrapper>

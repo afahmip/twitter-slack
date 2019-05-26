@@ -43,9 +43,7 @@ function ProfilePage(props) {
           name: res[0].user.name,
           screen_name: res[0].user.screen_name,
         })
-        res.map(r => {
-          data.push(createTweet(r))
-        })
+        res.map(r => data.push(createTweet(r)))
         setTweets(data)
       })
       .catch(err => console.error(err))

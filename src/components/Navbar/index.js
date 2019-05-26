@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -24,9 +25,11 @@ function Navbar(props) {
         <Item color="#B29FB3">
           <Section title="Channels" />
         </Item>
-        <Item color="#B29FB3">
-          <Part title="Timeline" icon="fas fa-home" />
-        </Item>
+        <Link to="/">
+          <Item color="#B29FB3">
+            <Part title="Timeline" icon="fas fa-home" />
+          </Item>
+        </Link>
         <Item color="#B29FB3">
           <Part title="Notifications" icon="fas fa-bell" />
         </Item>
