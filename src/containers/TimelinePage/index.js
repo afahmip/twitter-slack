@@ -1,65 +1,35 @@
 import React, { useEffect, useState } from 'react'
-// import PropTypes from 'prop-types'
-// import OAuth from 'oauth'
+import { observer } from 'mobx-react-lite'
+import { differenceInMinutes } from 'date-fns'
 
-import mockTimeline from 'mocks/timeline.json'
 import Dashboard from 'components/Dashboard'
+import TimelineStore from 'stores/TimelineStore'
 
-function TimelinePage(props) {
+const TimelinePage = observer(() => {
   const [tweets, setTweets] = useState([])
 
+  let isGetNewTimeline = () => {
+    const currTime = new Date()
+    const oldCreatedAt = new Date(TimelineStore.created_at)
+    const diff = differenceInMinutes(currTime, oldCreatedAt)
+    // console.log(diff, currTime, TimelineStore.created_at)
+    return diff >= 3
+  }
+
   useEffect(() => {
-    /* Use this for mock test */
-    let data = []
-    mockTimeline.map(r => {
-      let item = {
-        id: r.user.screen_name,
-        name: r.user.name,
-        photo: r.user.profile_image_url_https,
-        text: r.text
-      }
-      if (r.quoted_status) {
-        const q = r.quoted_status
-        item.child = {
-          id: q.user.screen_name,
-          name: q.user.name,
-          photo: q.user.profile_image_url_https,
-          text: q.text
-        }
-      }
-      data.push(item)
-    })
-    console.log(data)
-    setTweets(data)
-    
-    /* Use this for real usage */
-    // fetch('http://localhost:5000/api/timeline')
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     console.log(res)
-    //     let data = []
-    //     res.map(r => {
-    //       let item = {
-    //         id: r.user.screen_name,
-    //         name: r.user.name,
-    //         photo: r.user.profile_image_url_https,
-    //         text: r.text
-    //       }
-    //       if (r.quoted_status) {
-    //         const q = r.quoted_status
-    //         item.child = {
-    //           id: q.user.screen_name,
-    //           name: q.user.name,
-    //           photo: q.user.profile_image_url_https,
-    //           text: q.text
-    //         }
-    //       }
-    //       data.push(item)
-    //     })
-    //     console.log(data)
-    //     setTweets(data)
-    //   })
-    //   .catch(err => console.error(err))
+    if (isGetNewTimeline()) {
+      fetch('http://localhost:5000/api/timeline')
+        .then(res => res.json())
+        .then(res => {
+          // console.log(res)
+          TimelineStore.setTweets(res)
+          TimelineStore.setCreatedAt(new Date())
+          setTweets(TimelineStore.tweets)
+        })
+        .catch(err => console.error(err))
+    } else {
+      setTweets(TimelineStore.tweets)
+    }
   }, [])
 
   return (
@@ -70,10 +40,6 @@ function TimelinePage(props) {
       content={tweets}
     />
   )
-}
-
-TimelinePage.propTypes = {
-
-}
+})
 
 export default TimelinePage;

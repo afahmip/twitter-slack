@@ -1,22 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-// import styled from 'styled-components'
+import { observer } from 'mobx-react-lite'
+import { differenceInMinutes } from 'date-fns'
 
 import Navbar from 'components/Navbar'
 import Shell from 'components/Shell'
-import mockTrends from 'mocks/trends.json'
+import TrendStore from 'stores/TrendStore'
 
-function Dashboard(props) {
+const Dashboard = observer((props) => {
   const [trends, setTrends] = useState([])
 
+  let isGetNewTrends = () => {
+    const currTime = new Date()
+    const oldCreatedAt = new Date(TrendStore.created_at)
+    const diff = differenceInMinutes(currTime, oldCreatedAt)
+    // console.log(diff, currTime, oldCreatedAt)
+    return diff >= 5
+  } 
+
   useEffect(() => {
-    setTrends(mockTrends[0].trends)
-    // fetch('http://localhost:5000/api/trend')
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     console.log(res)
-    //     setTrends(res[0].trends)
-    //   })
+    if (isGetNewTrends()) {
+      fetch('http://localhost:5000/api/trend')
+        .then(res => res.json())
+        .then(res => {
+          TrendStore.setTrends(res[0].trends)
+          TrendStore.setCreatedAt(res[0].created_at)
+          setTrends(res[0].trends)
+          // console.log(res)
+        })
+    } else {
+      setTrends(TrendStore.trends)
+    }
   }, [])
 
   return (
@@ -32,7 +46,7 @@ function Dashboard(props) {
       />
     </div>
   )
-}
+})
 
 Dashboard.propTypes = {
   children: PropTypes.node,

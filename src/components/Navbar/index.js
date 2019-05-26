@@ -44,8 +44,8 @@ function Navbar(props) {
           <Section title="Worldwide Trends" />
         </Item>
         {props.trends.slice(0, 10).map((t, i) => (
-          <a href={t.url} target="_blank" rel="noopener noreferer">
-            <Item key={i} color="#B29FB3">
+          <a key={i} href={t.url} target="_blank" rel="noopener noreferrer">
+            <Item color="#B29FB3">
               <Part title={t.name.replace('#', '')} icon="fas fa-hashtag" />
             </Item>
           </a>
