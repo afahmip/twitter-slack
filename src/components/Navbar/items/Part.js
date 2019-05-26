@@ -8,6 +8,9 @@ const Wrapper = styled.div`
     font-weight: 400;
     font-size: 1rem;
     flex-basis: 91%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   i {
     color: #7F6480;

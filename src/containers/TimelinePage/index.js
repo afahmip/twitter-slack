@@ -10,9 +10,9 @@ const TimelinePage = observer(() => {
 
   let isGetNewTimeline = () => {
     const currTime = new Date()
-    const oldCreatedAt = new Date(TimelineStore.created_at)
+    const oldCreatedAt = new Date(TimelineStore.storedCreatedAt)
     const diff = differenceInMinutes(currTime, oldCreatedAt)
-    // console.log(diff, currTime, TimelineStore.created_at)
+    // console.log(diff, currTime, oldCreatedAt)
     return diff >= 3
   }
 
@@ -28,7 +28,7 @@ const TimelinePage = observer(() => {
         })
         .catch(err => console.error(err))
     } else {
-      setTweets(TimelineStore.tweets)
+      setTweets(TimelineStore.storedTweets)
     }
   }, [])
 

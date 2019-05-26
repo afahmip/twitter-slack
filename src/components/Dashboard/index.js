@@ -8,14 +8,14 @@ import Shell from 'components/Shell'
 import TrendStore from 'stores/TrendStore'
 
 const Dashboard = observer((props) => {
-  const [trends, setTrends] = useState([])
+  const [hashtags, setHashtags] = useState([])
 
   let isGetNewTrends = () => {
     const currTime = new Date()
-    const oldCreatedAt = new Date(TrendStore.created_at)
+    const oldCreatedAt = new Date(TrendStore.storedCreatedAt)
     const diff = differenceInMinutes(currTime, oldCreatedAt)
     // console.log(diff, currTime, oldCreatedAt)
-    return diff >= 5
+    return diff >= 10
   } 
 
   useEffect(() => {
@@ -23,20 +23,21 @@ const Dashboard = observer((props) => {
       fetch('http://localhost:5000/api/trend')
         .then(res => res.json())
         .then(res => {
-          TrendStore.setTrends(res[0].trends)
+          TrendStore.setHashtags(res[0].trends)
           TrendStore.setCreatedAt(res[0].created_at)
-          setTrends(res[0].trends)
+          setHashtags(TrendStore.hashtags)
           // console.log(res)
         })
+        .catch(err => console.error(err))
     } else {
-      setTrends(TrendStore.trends)
+      setHashtags(TrendStore.storedHashtags)
     }
   }, [])
 
   return (
     <div className="row">
       <Navbar
-        trends={trends}
+        trends={hashtags}
       />
       <Shell
         title={props.title}
