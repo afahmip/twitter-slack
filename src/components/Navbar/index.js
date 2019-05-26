@@ -43,6 +43,13 @@ function Navbar(props) {
         <Item color="#B29FB3">
           <Section title="Worldwide Trends" />
         </Item>
+        {props.trends.slice(0, 10).map((t, i) => (
+          <a href={t.url} target="_blank" rel="noopener noreferer">
+            <Item key={i} color="#B29FB3">
+              <Part title={t.name.replace('#', '')} icon="fas fa-hashtag" />
+            </Item>
+          </a>
+        ))}
       </div>
     </Wrapper>
   )
@@ -50,7 +57,8 @@ function Navbar(props) {
 
 Navbar.propTypes = {
   active: PropTypes.number,
-  title: PropTypes.string
+  title: PropTypes.string,
+  trends: PropTypes.array
 }
 
 export default Navbar

@@ -62,6 +62,28 @@ app.post('/api/profile', (req, res) => {
   )
 })
 
+app.get('/api/trend', (req, res) => {
+  if (req.query.q) {
+    oa.get(
+      `https://api.twitter.com/1.1/search/tweets.json?q=${req.query.q}`,
+      accessToken,
+      accessSecret,
+      function (e, data, result) {
+        res.send(JSON.parse(data))
+      }
+    )
+  } else {
+    oa.get(
+      'https://api.twitter.com/1.1/trends/place.json?id=1',
+      accessToken,
+      accessSecret,
+      function (e, data, result) {
+        res.send(JSON.parse(data))
+      }
+    )
+  }
+})
+
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`)
 })

@@ -7,12 +7,13 @@ const Wrapper = styled.div`
   h1 {
     font-weight: 400;
     font-size: 1rem;
-    flex-basis: 90%;
+    flex-basis: 91%;
   }
   i {
+    color: #7F6480;
     margin-top: 5px;
-    font-size: 0.8rem;
-    flex-basis: 10%;
+    font-size: 0.75rem;
+    flex-basis: 9%;
   }
 `
 
