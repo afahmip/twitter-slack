@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 function Shell(props) {
   return (
     <Wrapper>
-      <TopBar title={props.title} />
+      <TopBar title={props.title} subtitle={props.subtitle} />
       <Content data={props.content} />
       <MessageBar placeholder={props.msgPlaceholder} />
     </Wrapper>
@@ -23,6 +23,7 @@ function Shell(props) {
 Shell.propTypes = {
   title: PropTypes.string,
   content: PropTypes.array,
+  subtitle: PropTypes.string,
   msgPlaceholder: PropTypes.string
 }
 

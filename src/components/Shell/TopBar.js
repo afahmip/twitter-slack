@@ -31,7 +31,7 @@ function TopBar(props) {
       <Data>
         <h1>{props.title}</h1>
         <div className="row">
-          <p>Tweets from your friends</p>
+          <p>Tweets from {props.subtitle}</p>
         </div>
       </Data>
     </Wrapper>
@@ -39,7 +39,8 @@ function TopBar(props) {
 }
 
 TopBar.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
+  subtitle: PropTypes.string
 }
 
 export default TopBar

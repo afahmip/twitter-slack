@@ -37,10 +37,6 @@ app.get('/api/timeline', (req, res) => {
   )
 })
 
-app.post('/hello', (req, res) => {
-  res.send('hello')
-})
-
 app.post('/api/tweet', (req, res) => {
   const status = req.body.status
   oa.post(
@@ -48,6 +44,18 @@ app.post('/api/tweet', (req, res) => {
     accessToken,
     accessSecret,
     {status},
+    function (e, data, result) {
+      res.send(JSON.parse(data))
+    }
+  )
+})
+
+app.post('/api/profile', (req, res) => {
+  const id = req.body.id
+  oa.get(
+    `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=${id}&count=25`,
+    accessToken,
+    accessSecret,
     function (e, data, result) {
       res.send(JSON.parse(data))
     }

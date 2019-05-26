@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Linkify from 'react-linkify'
@@ -101,7 +102,7 @@ const ChildContent = styled.div`
 function urlify(text) {
   let config = [{
     regex: /@\w{1,15}\b/g,
-    fn: (key, res) => <a key={key} href={`https://www.twitter.com/${res}`} target="_blank" rel="noopener noreferrer">{res}</a>
+    fn: (key, res) => <Link key={key} to={`/${res}`}>{res}</Link>
   }]
   return processString(config)(text)
 }
