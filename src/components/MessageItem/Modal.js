@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   border: 1px solid #cccccc;
   border-radius: 5px;
   height: 1.5rem;
-  width: 4rem;
+  min-width: 4rem;
   position: absolute;
   right: 0.5rem;
   top: -0.5rem;
@@ -49,7 +49,6 @@ const Button = styled.div`
 
 const Modal = observer((props) => {
   let setData = () => {
-    console.log(props.message)
     MessageInteractionStore.setActive(true)
     MessageInteractionStore.setMessage(props.message)
   }
@@ -60,6 +59,9 @@ const Modal = observer((props) => {
         <i className="far fa-comment" />
       </Button>
       <Separator />
+      <Button>
+        <i className="far fa-arrow-alt-circle-right" />
+      </Button>
     </Wrapper>
   )
 })
