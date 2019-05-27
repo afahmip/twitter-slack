@@ -43,4 +43,4 @@ const TimelinePage = observer(() => {
   )
 })
 
-export default TimelinePage;
+export default TimelinePage

@@ -114,6 +114,13 @@ function urlify(text) {
 
 function MessageItem(props) {
   const [show, setShow] = useState(false)
+  const modal = <Modal
+                  id={props.id}
+                  name={props.name}
+                  photo={props.photo}
+                  text={props.text}
+                  child={props.child}
+                />
   
   let child = null
   if (props.child) {
@@ -144,7 +151,7 @@ function MessageItem(props) {
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
-      { show ? <Modal /> : '' }
+      { show ? modal : '' }
       <Image>
         <Link to={`/${props.id}`}>
           <img src={props.photo} alt="profpic" />

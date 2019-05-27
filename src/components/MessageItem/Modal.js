@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { observer } from 'mobx-react-lite'
+
+import MessageInteractionStore from 'stores/MessageInteractionStore'
 
 const Wrapper = styled.div`
   background-color: white;
@@ -34,6 +37,9 @@ const Button = styled.div`
   cursor: pointer;
   padding: 0.8rem 0.5rem;
   transition-duration: 0.2s;
+  i {
+    color: #515151;
+  }
   :hover {
     i {
       color: #3a4f8e;
@@ -41,19 +47,35 @@ const Button = styled.div`
   }
 `
 
-function Modal(props) {
+const Modal = observer((props) => {
+  let setData = () => {
+    const data = {
+      id: props.id,
+      name: props.name,
+      photo: props.photo,
+      text: props.text,
+      child: props.child
+    }
+    MessageInteractionStore.setActive(true)
+    MessageInteractionStore.setMessage(data)
+  }
+
   return (
     <Wrapper>
-      <Button>
+      <Button onClick={() => setData()}>
         <i className="far fa-comment" />
       </Button>
       <Separator />
     </Wrapper>
   )
-}
+})
 
 Modal.propTypes = {
-
+  id: PropTypes.string,
+  name: PropTypes.string,
+  photo: PropTypes.string,
+  text: PropTypes.string,
+  child: PropTypes.object
 }
 
 export default Modal
