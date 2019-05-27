@@ -54,7 +54,8 @@ const Modal = observer((props) => {
       name: props.name,
       photo: props.photo,
       text: props.text,
-      child: props.child
+      child: props.child,
+      media: props.media
     }
     MessageInteractionStore.setActive(true)
     MessageInteractionStore.setMessage(data)
@@ -75,7 +76,8 @@ Modal.propTypes = {
   name: PropTypes.string,
   photo: PropTypes.string,
   text: PropTypes.string,
-  child: PropTypes.object
+  child: PropTypes.object,
+  media: PropTypes.array
 }
 
 export default Modal

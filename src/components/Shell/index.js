@@ -15,10 +15,10 @@ const Wrapper = styled.div`
 
 const ContentWrapper = styled.div`
   > div:first-child {
-    flex-basis: 55%;
+    flex-basis: 60%;
   }
   > div: last-child {
-    flex-basis: 45%;
+    flex-basis: 40%;
   }
 `
 

@@ -45,7 +45,7 @@ const Header = styled.div`
 `
 
 const Content = styled.div`
-  padding-top: 10px;
+  // padding-top: 10px;
 `
 
 const Thread = observer((props) => {
@@ -69,6 +69,7 @@ const Thread = observer((props) => {
           photo={props.message.photo}
           text={props.message.text}
           child={props.message.child}
+          media={props.message.media}
         />
       </Content>
     </Wrapper>

@@ -104,6 +104,26 @@ const ChildContent = styled.div`
   }
 `
 
+const Media = styled.div`
+  margin-top: 10px;
+  max-height: 23rem;
+  max-width: 23rem;
+  border-radius: 5px;
+  overflow: hidden;
+
+  > p {
+    color: rgba(29, 28, 29, .7);
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  > img {
+    width: 100%;
+    border-radius: 5px;
+    // object-fit: cover;
+  }
+`
+
 function urlify(text) {
   let config = [{
     regex: /@\w{1,15}\b/g,
@@ -120,6 +140,7 @@ function MessageItem(props) {
                   photo={props.photo}
                   text={props.text}
                   child={props.child}
+                  media={props.media}
                 />
   
   let child = null
@@ -145,6 +166,21 @@ function MessageItem(props) {
     </Child>
   }
 
+  let media = null
+  let mediaTitle = ''
+  if (props.media) {
+    media = []
+    props.media.map(m => {
+      mediaTitle = m.replace('https://pbs.twimg.com/media/', '')
+      media.push(
+        <Media>
+          <p>{mediaTitle}</p>
+          <img src={m} alt="" />
+        </Media>
+      )
+    })
+  }
+
   return (
     <Wrapper
       className="row"
@@ -168,6 +204,7 @@ function MessageItem(props) {
           <Linkify>
             <p>{urlify(props.text)}</p>
           </Linkify>
+          {media}
         </div>
         {child}
       </Content>
@@ -180,7 +217,8 @@ MessageItem.propTypes = {
   name: PropTypes.string,
   photo: PropTypes.string,
   text: PropTypes.string,
-  child: PropTypes.object
+  child: PropTypes.object,
+  media: PropTypes.array
 }
 
 export default MessageItem

@@ -12,7 +12,7 @@ const TimelinePage = observer(() => {
     const currTime = new Date()
     const oldCreatedAt = new Date(TimelineStore.storedCreatedAt)
     const diff = differenceInMinutes(currTime, oldCreatedAt)
-    console.log(diff, currTime, oldCreatedAt)
+    // console.log(diff, currTime, oldCreatedAt)
     return diff >= 3
   }
 

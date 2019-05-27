@@ -24,6 +24,7 @@ function Content(props) {
         photo={d.photo}
         text={d.text}
         child={d.child || null}
+        media={d.media || null}
       />
     )
   )

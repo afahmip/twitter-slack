@@ -43,6 +43,15 @@ export class TimelineStore {
           text: q.text
         }
       }
+      if (d.extended_entities) {
+        if (d.extended_entities.media) {
+          const data = []
+          d.extended_entities.media.map(m => {
+            if (m.type === 'photo') data.push(m.media_url_https)
+          })
+          item.media = data
+        }
+      }
       result.push(item)
     })
     this.tweets = result
