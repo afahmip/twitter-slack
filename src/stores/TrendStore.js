@@ -21,6 +21,10 @@ export class TrendStore {
     return trends.created_at
   }
 
+  clearStoredData() {
+    localStorage.removeItem('trends')
+  }
+
   setHashtags(data) {
     this.hashtags = data
     this.setAllData(data, '')
@@ -47,7 +51,8 @@ decorate(TrendStore, {
   storedHashtags: computed,
   storedCreatedAt: computed,
   setHashtags: action,
-  setCreatedAt: action
+  setCreatedAt: action,
+  clearStoredData: action
 })
 
 export default new TrendStore()

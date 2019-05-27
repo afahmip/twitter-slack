@@ -23,6 +23,7 @@ const Dashboard = observer((props) => {
       fetch('http://localhost:5000/api/trend')
         .then(res => res.json())
         .then(res => {
+          TrendStore.clearStoredData()
           TrendStore.setHashtags(res[0].trends)
           TrendStore.setCreatedAt(res[0].created_at)
           setHashtags(TrendStore.hashtags)

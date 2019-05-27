@@ -21,6 +21,10 @@ export class TimelineStore {
     return timeline.created_at
   }
 
+  clearStoredData() {
+    localStorage.removeItem('timeline')
+  }
+
   setTweets(data) {
     const result = []
     data.map(d => {
@@ -66,7 +70,8 @@ decorate(TimelineStore, {
   storedTweets: computed,
   storedCreatedAt: computed,
   setTweets: action,
-  setCreatedAt: action
+  setCreatedAt: action,
+  clearStoredData: action
 })
 
 export default new TimelineStore()

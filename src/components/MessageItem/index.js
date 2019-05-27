@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Linkify from 'react-linkify'
 import processString from 'react-process-string'
 
+import Modal from './Modal'
+
 const Wrapper = styled.div`
   padding: 7px 27px;
+  position: relative;
   &:hover {
     background-color: #F8F8F8;
   }
@@ -110,6 +113,8 @@ function urlify(text) {
 }
 
 function MessageItem(props) {
+  const [show, setShow] = useState(false)
+  
   let child = null
   if (props.child) {
     child = <Child className="row">
@@ -134,7 +139,12 @@ function MessageItem(props) {
   }
 
   return (
-    <Wrapper className="row">
+    <Wrapper
+      className="row"
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+    >
+      { show ? <Modal /> : '' }
       <Image>
         <Link to={`/${props.id}`}>
           <img src={props.photo} alt="profpic" />

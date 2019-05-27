@@ -12,7 +12,7 @@ const TimelinePage = observer(() => {
     const currTime = new Date()
     const oldCreatedAt = new Date(TimelineStore.storedCreatedAt)
     const diff = differenceInMinutes(currTime, oldCreatedAt)
-    // console.log(diff, currTime, oldCreatedAt)
+    console.log(diff, currTime, oldCreatedAt)
     return diff >= 3
   }
 
@@ -22,6 +22,7 @@ const TimelinePage = observer(() => {
         .then(res => res.json())
         .then(res => {
           // console.log(res)
+          TimelineStore.clearStoredData()
           TimelineStore.setTweets(res)
           TimelineStore.setCreatedAt(new Date())
           setTweets(TimelineStore.tweets)
