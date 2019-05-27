@@ -49,16 +49,9 @@ const Button = styled.div`
 
 const Modal = observer((props) => {
   let setData = () => {
-    const data = {
-      id: props.id,
-      name: props.name,
-      photo: props.photo,
-      text: props.text,
-      child: props.child,
-      media: props.media
-    }
+    console.log(props.message)
     MessageInteractionStore.setActive(true)
-    MessageInteractionStore.setMessage(data)
+    MessageInteractionStore.setMessage(props.message)
   }
 
   return (
@@ -72,12 +65,7 @@ const Modal = observer((props) => {
 })
 
 Modal.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  photo: PropTypes.string,
-  text: PropTypes.string,
-  child: PropTypes.object,
-  media: PropTypes.array
+  message: PropTypes.object
 }
 
 export default Modal

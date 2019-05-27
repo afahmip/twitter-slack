@@ -134,32 +134,25 @@ function urlify(text) {
 
 function MessageItem(props) {
   const [show, setShow] = useState(false)
-  const modal = <Modal
-                  id={props.id}
-                  name={props.name}
-                  photo={props.photo}
-                  text={props.text}
-                  child={props.child}
-                  media={props.media}
-                />
+  const modal = <Modal message={props.message} />
   
   let child = null
-  if (props.child) {
+  if (props.message.hasOwnProperty('child')) {
     child = <Child className="row">
       <div />
       <ChildContent>
         <div>
-          <Link to={`/${props.child.id}`}>
-            <img src={props.child.photo} alt="profpic" />
+          <Link to={`/${props.message.child.username}`}>
+            <img src={props.message.child.photo} alt="profpic" />
           </Link>
-          <Link to={`/${props.child.id}`}>
-            <span>{props.child.name}</span>
+          <Link to={`/${props.message.child.username}`}>
+            <span>{props.message.child.name}</span>
           </Link>
-          <span>@{props.child.id}</span>
+          <span>@{props.message.child.username}</span>
         </div>
         <div>
           <Linkify>
-            <p>{urlify(props.child.text)}</p>
+            <p>{urlify(props.message.child.text)}</p>
           </Linkify>
         </div>
       </ChildContent>
@@ -168,12 +161,12 @@ function MessageItem(props) {
 
   let media = null
   let mediaTitle = ''
-  if (props.media) {
+  if (props.message.hasOwnProperty('media')) {
     media = []
-    props.media.map(m => {
+    props.message.media.map((m, i) => {
       mediaTitle = m.replace('https://pbs.twimg.com/media/', '')
       media.push(
-        <Media>
+        <Media key={i}>
           <p>{mediaTitle}</p>
           <img src={m} alt="" />
         </Media>
@@ -189,20 +182,20 @@ function MessageItem(props) {
     >
       { show ? modal : '' }
       <Image>
-        <Link to={`/${props.id}`}>
-          <img src={props.photo} alt="profpic" />
+        <Link to={`/${props.message.username}`}>
+          <img src={props.message.photo} alt="profpic" />
         </Link>
       </Image>
       <Content>
         <div>
-          <Link to={`/${props.id}`}>
-            <span>{props.name}</span>
+          <Link to={`/${props.message.username}`}>
+            <span>{props.message.name}</span>
           </Link>
-          <span>@{props.id}</span>
+          <span>@{props.message.username}</span>
         </div>
         <div>
           <Linkify>
-            <p>{urlify(props.text)}</p>
+            <p>{urlify(props.message.text)}</p>
           </Linkify>
           {media}
         </div>
@@ -213,12 +206,7 @@ function MessageItem(props) {
 }
 
 MessageItem.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  photo: PropTypes.string,
-  text: PropTypes.string,
-  child: PropTypes.object,
-  media: PropTypes.array
+  message: PropTypes.object
 }
 
 export default MessageItem

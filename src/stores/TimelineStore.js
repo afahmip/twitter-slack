@@ -29,7 +29,8 @@ export class TimelineStore {
     const result = []
     data.map(d => {
       let item = {
-        id: d.user.screen_name,
+        id: d.id,
+        username: d.user.screen_name,
         name: d.user.name,
         photo: d.user.profile_image_url_https,
         text: d.text
@@ -37,7 +38,8 @@ export class TimelineStore {
       if (d.quoted_status) {
         const q = d.quoted_status
         item.child = {
-          id: q.user.screen_name,
+          id: q.id,
+          username: q.user.screen_name,
           name: q.user.name,
           photo: q.user.profile_image_url_https,
           text: q.text

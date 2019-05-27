@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -49,10 +49,6 @@ const Content = styled.div`
 `
 
 const Thread = observer((props) => {
-  useEffect(() => {
-    console.log(props.message.name)
-  }, [])
-
   return (
     <Wrapper>
       <Header>
@@ -63,14 +59,7 @@ const Thread = observer((props) => {
         </div>
       </Header>
       <Content>
-        <MessageItem
-          id={props.message.id}
-          name={props.message.name}
-          photo={props.message.photo}
-          text={props.message.text}
-          child={props.message.child}
-          media={props.message.media}
-        />
+        <MessageItem message={props.message} />
       </Content>
     </Wrapper>
   )
